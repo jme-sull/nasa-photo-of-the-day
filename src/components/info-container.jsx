@@ -1,15 +1,10 @@
 import React from 'react'
 
 export default function InfoContainer (props) {
-
-    const { explanation, date } = props
-
     return (
-
     <div> 
-        <p>About: {explanation}</p>
-        <p>Date: {date} </p>
+        <p>About: {props.currentInfo.explanation}</p>
+        <p>Date: {props.currentInfo.date} </p>
     </div>
-
     )
 }

@@ -34,8 +34,8 @@ function App() {
 
     <div className="App">
       <h1> {currentInfo.title} </h1>
-      <ImageContainer imageSRC = {currentInfo.url}/>
-      <InfoContainer explanation = {currentInfo.explanation} date = {currentInfo.date} />
+      <ImageContainer currentInfo = {currentInfo}/>
+      
     </div>
   );
 }
