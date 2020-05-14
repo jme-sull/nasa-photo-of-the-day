@@ -10,14 +10,15 @@ import InfoContainer from "./components/info-container";
 
 function App() {
 
-  const [ currentInfo, setCurrentInfo] = useState({ })
+  const [ currentInfo, setCurrentInfo] = useState({})
 
 
   useEffect(() => {
     
     axios.get(`${BASE_URL}?api_key=${API_KEY}`)
       .then(res => {
-        console.log(res)
+        console.log('this should only render once!')
+        console.log(res.data)
         setCurrentInfo(res.data)
       })
       .catch(err => {
@@ -34,7 +35,7 @@ function App() {
     <div className="App">
       <h1> {currentInfo.title} </h1>
       <ImageContainer imageSRC = {currentInfo.url}/>
-      <InfoContainer explaination = {currentInfo.explanation} />
+      <InfoContainer explanation = {currentInfo.explanation} date = {currentInfo.date} />
     </div>
   );
 }
