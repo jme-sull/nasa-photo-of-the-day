@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import axios from 'axios';
+import { BASE_URL, API_KEY } from './constants'
+import ImageContainer from './components/image-container.jsx'
+import InfoContainer from "./components/info-container";
+
+
+
 
 function App() {
+
+  const [ currentInfo, setCurrentInfo] = useState({})
+
+
+  useEffect(() => {
+    
+    axios.get(`${BASE_URL}?api_key=${API_KEY}`)
+      .then(res => {
+        console.log('this should only render once!')
+        console.log(res.data)
+        setCurrentInfo(res.data)
+      })
+      .catch(err => {
+        console.log('nope')
+        debugger
+      })
+    },[])
+
+
+
+
   return (
+
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      <h1> {currentInfo.title} </h1>
+      <ImageContainer currentInfo = {currentInfo}/>
+      
     </div>
   );
 }
